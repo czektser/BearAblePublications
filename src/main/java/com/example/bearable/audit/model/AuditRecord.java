@@ -1,4 +1,4 @@
-package com.example.bearable.audit;
+package com.example.bearable.audit.model;
 
 import java.util.UUID;
 
@@ -8,6 +8,6 @@ public interface AuditRecord {
     AuditRecord getRecord(UUID id);
 
     enum AuditRecordType {
-        AUTHENTICATION
+        AUTHENTICATION,PUBLICATION,SOURCE,GRANT,EMAIL
     }
 }

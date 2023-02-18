@@ -1,13 +1,49 @@
 package com.example.bearable.authentication.model;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
+import javax.persistence.ManyToOne;
 import java.util.UUID;
 import java.time.Instant;
 
-@Data
+@Entity
 public class Token { //TODO: create job to cleanup expired tokens
-    private final UUID id;
-    private final Instant creationTime;
-    private final Instant expirationTime;
+    @Id
+    @GeneratedValue
+    private UUID id;
+    private Instant creationTime;
+    private Instant expirationTime;
+
+    @ManyToOne
+    //annotation bellow is just for Jackson serialization in controller
+    @JsonIdentityInfo(
+            generator = ObjectIdGenerators.PropertyGenerator.class,
+            property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
+    private Account account;
+
+    public UUID getId(){
+        return id;
+    }
+
+    public void setCreationTime(Instant creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    public Instant getCreationTime(){
+        return creationTime;
+    }
+
+    public void setExpirationTime(Instant expirationTime) {
+        this.expirationTime =  expirationTime;
+    }
+
+    public Instant getExpirationTime(){
+        return expirationTime;
+    }
 }
