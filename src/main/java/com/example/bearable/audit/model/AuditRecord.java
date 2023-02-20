@@ -8,6 +8,6 @@ public interface AuditRecord {
     AuditRecord getRecord(UUID id);
 
     enum AuditRecordType {
-        AUTHENTICATION,PUBLICATION,SOURCE,GRANT,EMAIL
+        AUTHENTICATION,PUBLICATION,SOURCE,DEPARTMENT,GRANT,EMAIL
     }
 }

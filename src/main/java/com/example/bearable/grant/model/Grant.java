@@ -13,7 +13,11 @@ public class Grant {
     private Instant issueDate;
     private String name;
     private Double grantValue;
-    private Boolean active;
+    private Boolean isActive;
+
+    private Boolean isFunded;
+
+
 
     public UUID getId(){
         return id;
@@ -43,12 +47,20 @@ public class Grant {
         return grantValue;
     }
 
-    public void setActive(Boolean active){
-        this.active = active;
+    public void setIsActive(Boolean isActive){
+        this.isActive = isActive;
     }
 
-    public Boolean getActive(){
-        return active;
+    public Boolean getIsActive(){
+        return isActive;
+    }
+
+    public void setIsFunded(Boolean isFunded) {
+        this.isFunded = isFunded;
+    }
+
+    public Boolean getIsFunded(){
+        return isFunded;
     }
 
 }
